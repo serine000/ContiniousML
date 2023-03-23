@@ -3,5 +3,4 @@ numpy
 setuptools
 matplotlib
 scikit-learn
-random
 seaborn
