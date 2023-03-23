@@ -28,6 +28,8 @@ targs = y_train
 test_preds = model.predict(X_test)
 test_targs = y_test 
 test_acc = metrics.accuracy_score(test_targs, test_preds)
+print("!!!!!!!!!!!!!!!!!")
+print(test_acc)
 with open("metrics.txt", "w") as outfile:
     outfile.write("Testing accuracy: " + str(test_acc) + "\n")
 
