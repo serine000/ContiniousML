@@ -3,6 +3,5 @@ numpy
 setuptools
 matplotlib
 scikit-learn
-pickle
 random
 seaborn
