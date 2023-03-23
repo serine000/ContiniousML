@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn import utils 
 from sklearn import svm
+import pickle
 from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
@@ -18,7 +19,7 @@ target = np.genfromtxt("data/target.csv")
 
 # Fit a model
 nu = outliers.shape[0] / target.shape[0]
-model = make_pipeline(StandardScaler(), svm.OneClassSVM(kernel='rbf', nu = nu, gamma=0.5))
+model = make_pipeline(StandardScaler(), svm.OneClassSVM(kernel='rbf', nu = nu, gamma=0.4))
 model.fit(X_train)
 
 
@@ -42,3 +43,6 @@ with open("metrics.txt", "w") as outfile:
     # outfile.write("Testing f1 score: " + str(metrics.f1_score(test_targs, test_preds)) + "\n")
     # outfile.write("Testing area under curve (AUC): " + str(metrics.roc_auc_score(test_targs, test_preds)) + "\n")
     # outfile.write("\n")
+
+
+pickle.dump(model, open('unsupervised_model','wb'))
