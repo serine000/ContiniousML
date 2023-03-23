@@ -4,4 +4,3 @@ setuptools
 matplotlib
 scikit-learn
 seaborn
-pickle
