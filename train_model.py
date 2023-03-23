@@ -19,7 +19,7 @@ target = np.genfromtxt("data/target.csv")
 
 # Fit a model
 nu = outliers.shape[0] / target.shape[0]
-model = make_pipeline(StandardScaler(), svm.OneClassSVM(kernel='rbf', nu = nu, gamma=0.4))
+model = make_pipeline(StandardScaler(), svm.OneClassSVM(kernel='rbf', nu = nu, gamma=0.005))
 model.fit(X_train)
 
 
