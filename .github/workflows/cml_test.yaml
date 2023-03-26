@@ -29,11 +29,11 @@ jobs:
           
           # Post reports as comments in GitHub PRs
           cat metrics.txt >> report.md
-          # cml comment create report.md
+          cml comment create report.md
       - name: Commit new files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Retrained new unsupervised model - in progress
+          commit_message: Retrained new unsupervised model
       
       - name: "Run if changes have been detected"
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
