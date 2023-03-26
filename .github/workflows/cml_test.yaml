@@ -28,13 +28,9 @@ jobs:
           cat metrics.txt >> report.md
           # cml comment create report.md
       
-      - name: Raise PR
-        uses: peter-evans/create-pull-request@v4
-        with:
-            commit-message: Retrained the model
-            title: Model Retraining
-            branch: "dev"
-            base: dev
-            token: ${{ secrets.PAT }} 
+      - name: create pull request
+      run: gh pr create -B main -H dev --title 'Merge dev into main' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       
