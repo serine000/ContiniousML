@@ -30,7 +30,7 @@ jobs:
           cat metrics.txt >> report.md
           # cml comment create report.md
       - name: Commit new files
-      - uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Retrained new unsupervised model
       
