@@ -10,6 +10,8 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     container: ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
@@ -27,13 +29,16 @@ jobs:
           # Post reports as comments in GitHub PRs
           cat metrics.txt >> report.md
           # cml comment create report.md
-      
-      - name: create pull request
-        uses: peter-evans/create-pull-request@v4
+      - name: Commit new files
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          token: ${{ secrets.PAT }}
-          commit-message: Auto Pull Request
-          title: Your desired title
-          body: Auto-created Pull Request
-          branch: ${{ github.ref }} 
+          commit_message: Retrained new unsupervised model
+      
+      # - name: create pull request
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     commit-message: Auto Pull Request
+      #     title: Your desired title
+      #     body: Auto-created Pull Request
+      #     branch: dev
       
